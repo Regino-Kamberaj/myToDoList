@@ -9,6 +9,7 @@
 class Date {
 public:
     Date(int day, int month, int year);
+    Date() : day(0), month(0), year(0) {}
 
     int getDay() const;
 

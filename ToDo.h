@@ -12,10 +12,13 @@
 
 class ToDo {
 public:
-    ToDo(const Date &date, std::string description) :date(date), description(std::move(description)), completed(
+    ToDo(const Date &date, std::string description) : date(date), description(std::move(description)), completed(
             false) {
         // More code here...
     }
+
+    ToDo() : completed(false) {}
+
 
     std::string getDate() const {
         std::stringstream s;
@@ -53,4 +56,5 @@ private:
     std::string description;
     bool completed;
 };
+
 #endif //MYTODOLIST_TODO_H

@@ -8,7 +8,7 @@
 Date::Date(int day, int month, int year): day(day), month(month), year(year) {
     // More code here...
     if (!validDate(day, month, year))
-        throw std::out_of_range("Data non valida!")
+        throw std::out_of_range("Data non valida!");
 }
 
 int Date::getDay() const {
@@ -75,7 +75,7 @@ int Date::getDaysOfMonth(const int &month, const int &year) {
 
 
 bool Date::validDate(const int &day, const int &month, const int &year) {
-    if(year >= 2023 && month > 0 && month < 13 && day > 0 && day <= getDaysOfMonth(month))
+    if (year >= 2023 && month > 0 && month < 13 && day > 0 && day <= getDaysOfMonth(month, year))
         return true;
     else
         return false;

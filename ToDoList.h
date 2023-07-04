@@ -10,7 +10,9 @@
 
 class ToDoList {
 public:
-    explicit ToDoList(const std::string &title);
+    explicit ToDoList(std::string title);
+
+    ToDoList() = default;
 
     // Dei getters - setters controllare se utilizzati o no
     const std::list<ToDo> &getToDoList() const;
@@ -21,18 +23,23 @@ public:
 
     void setTitle(const std::string &title);
 
-    void addToDo(const ToDo& todo);
+    void addToDo(const ToDo &todo);
 
-    void removeTodo(const ToDo& todo);
+    void removeTodo(const ToDo &todo);
 
-    void setTodoCompleted(const ToDo& todo);
+    void setTodoCompleted(const ToDo &todo);
 
-    void modifyTodo(const ToDo& todo, std::string newDesc, bool completed);
+    void modifyTodo(const ToDo &todo, std::string newDesc, bool completed);
 
     void displayToDos();
+
     void displayUncompletedToDos();
+
+    void displayToDoList(); // todo da mettere??
+
 private:
-    const ToDo& findTodo(const ToDo& todo);
+    const ToDo &findTodo(const ToDo &todo);
+
     std::list<ToDo> toDoList;
     std::string title;
 
