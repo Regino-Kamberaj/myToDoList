@@ -23,10 +23,19 @@ public:
 
     void addToDo(const ToDo& todo);
 
-    void removeTodo(ToDo todo);
+    void removeTodo(const ToDo& todo);
+
+    void setTodoCompleted(const ToDo& todo);
+
+    void modifyTodo(const ToDo& todo, std::string newDesc, bool completed);
+
+    void displayToDos();
+    void displayUncompletedToDos();
 private:
+    const ToDo& findTodo(const ToDo& todo);
     std::list<ToDo> toDoList;
     std::string title;
+
 };
 
 

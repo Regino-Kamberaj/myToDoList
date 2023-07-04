@@ -7,16 +7,20 @@
 
 #include "Date.h"
 #include <string>
+#include <utility>
+#include <sstream>
 
 class ToDo {
 public:
-    ToDo(const Date &date, const std::string &description) :date(date), description(description), completed(
+    ToDo(const Date &date, std::string description) :date(date), description(std::move(description)), completed(
             false) {
         // More code here...
     }
 
-    const Date &getDate() const {
-        return date;
+    std::string getDate() const {
+        std::stringstream s;
+        s << date.getDay() << "/" << date.getMonth() << "/" << date.getYear();
+        return s.str();;
     }
 
     void setDate(const Date &date) {
