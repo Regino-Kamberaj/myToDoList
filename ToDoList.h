@@ -29,16 +29,16 @@ public:
 
     void setTodoCompleted(std::string description);
 
-    void modifyTodo(std::string desc, std::string newDesc, const Date &newDate);
+    void modifyTodo(const std::string &desc, const std::string &newDesc, const Date &newDate);
 
-    void displayToDos();
+    void displayAllToDos();
 
     void displayUncompletedToDos();
 
     void displayToDoList(); // todo da mettere??
 
 private:
-    ToDo &findTodo(std::string description);
+    ToDo &findTodo(const std::string &description);
 
     std::list<ToDo> toDoList;
     std::string title;

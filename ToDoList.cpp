@@ -30,25 +30,26 @@ void ToDoList::setTitle(const std::string &title) {
 void ToDoList::addToDo(const ToDo& todo) {
     // Add it to the end of the todolist
     toDoList.push_back(todo);
-    this->displayToDos();
+    this->displayAllToDos();
 }
 
 void ToDoList::removeTodo(const std::string &description) {
     ToDo deletedTodo = findTodo(description);
     if (!deletedTodo.getDescription().empty()) {
         toDoList.remove(deletedTodo);
-        this->displayToDos();
+        this->displayAllToDos();
     } else
         std::cout << "Sorry there's not a todo with description: " << description << std::endl;
 }
 
 void ToDoList::setTodoCompleted(std::string description) {
-    ToDo &setToDo = findTodo(description);
+    ToDo &setToDo = findTodo(std::move(description));
     if (!setToDo.isCompleted())
         setToDo.setCompleted();
+    this->displayAllToDos();
 }
 
-void ToDoList::modifyTodo(std::string desc, std::string newDesc, const Date &newDate) {
+void ToDoList::modifyTodo(const std::string &desc, const std::string &newDesc, const Date &newDate) {
     ToDo &modifyToDo = findTodo(desc);
 
     if (!modifyToDo.getDescription().empty()) {
@@ -60,22 +61,21 @@ void ToDoList::modifyTodo(std::string desc, std::string newDesc, const Date &new
         else
             modifyToDo.setCompleted();
 
-        this->displayToDos();
+        this->displayAllToDos();
     } else
         std::cout << "Sorry there's not a todo with description: " << desc << std::endl;
 
 }
 
 
-
-void ToDoList::displayToDos() {
+void ToDoList::displayAllToDos() {
     std::cout << "List of all todos:" << std::endl;
-    for(auto & todo:toDoList) {
-        std::cout << "-- " << todo.getDescription() << "\n";
+    for (auto &todo: toDoList) {
+        std::cout << "-- " << todo.getDescription() << " - ";
         if (!todo.isCompleted())
             std::cout << "To be completed in " << todo.getDate() << "\n";
         else
-            std::cout << " Already done!" << std::endl;
+            std::cout << "Already done!" << std::endl;
     }
 }
 
@@ -88,7 +88,7 @@ void ToDoList::displayUncompletedToDos() {
     }
 }
 
-ToDo &ToDoList::findTodo(std::string desc) {
+ToDo &ToDoList::findTodo(const std::string &desc) {
     static ToDo emptyTodo; //forse non la soluzione migliore...
 
     // Scorro la lista tramite un iteratore
@@ -99,4 +99,5 @@ ToDo &ToDoList::findTodo(std::string desc) {
     //altrimenti ritorno un emptyTodo
     return emptyTodo;
 }
+
 

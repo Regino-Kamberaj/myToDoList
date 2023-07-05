@@ -37,12 +37,14 @@ int main() {
                 break;
             case 1:
                 std::cout << "Please enter the name of the todolist: ";
-                std::cin >> title;
+                std::cin.ignore();
+                std::getline(std::cin, title);
                 newList = ToDoList(title);
                 break;
             case 2:
                 std::cout << "Please enter the description of the todo: ";
-                std::cin >> description;
+                std::cin.ignore();
+                std::getline(std::cin, description);
                 std::cout << "Then enter the due date(in dd mm yy format): ";
                 std::cin >> day >> month >> year;
                 date = Date(day, month, year);
@@ -50,17 +52,20 @@ int main() {
                 break;
             case 3:
                 std::cout << "Please enter the description of the todo you want to remove: ";
-                std::cin >> description;
+                std::cin.ignore();
+                std::getline(std::cin, description);
                 newList.removeTodo(description);
                 break;
             case 4:
                 std::cout << "Please enter the description of the todo you want to modify: ";
-                std::cin >> description;
+                std::cin.ignore();
+                std::getline(std::cin, description);
                 std::cout << "What do you want to modify?(Enter d for description, g for date or c for completed): ";
                 std::cin >> choice;
                 if (choice == 'd') {
                     std::cout << "Then please enter your new description: ";
-                    std::cin >> newDescription;
+                    std::cin.ignore();
+                    std::getline(std::cin, newDescription);
                     newList.modifyTodo(description, newDescription, date);
                 } else if (choice == 'g') {
                     std::cout << "Then enter the new date(in dd mm yy format): ";
@@ -74,18 +79,18 @@ int main() {
                 break;
             case 5:
                 std::cout << "Please enter the description of the todo you want to be completed: ";
-                std::cin >> description;
+                std::cin.ignore();
+                std::getline(std::cin, description);
                 newList.setTodoCompleted(description);
                 break;
             case 6:
                 newList.displayUncompletedToDos();
                 break;
             case 7:
-                newList.displayToDos();
+                newList.displayAllToDos();
                 break;
             default:
                 std::cout << "Please enter a option on the list of options!" << std::endl;
-
         }
     } while (!stop);
 
