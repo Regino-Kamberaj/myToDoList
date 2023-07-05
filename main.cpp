@@ -8,16 +8,16 @@ int main() {
     Date date;
     bool stop = false;
     int option;
-    std::cout << "********** Welcome To my Todo List! **********" << std::endl;
-    std::cout << "           List of options " << std::endl;
-    std::cout << "        1) Create your new TodoList " << std::endl;
-    std::cout << "        2) Add a new Todo " << std::endl;
-    std::cout << "        3) Remove a Todo " << std::endl;
-    std::cout << "        4) Modify a Todo " << std::endl;
-    std::cout << "        5) Set completed a Todo " << std::endl;
-    std::cout << "        6) Display your uncompleted todos in a ToDoList " << std::endl;
-    std::cout << "        7) Display all your todos in a ToDoList " << std::endl;
-
+    std::cout << "**************** Welcome To my Todo List! ******************" << std::endl;
+    std::cout << "List of options: " << std::endl;
+    std::cout << "1) Create your new TodoList " << std::endl;
+    std::cout << "2) Add a new Todo " << std::endl;
+    std::cout << "3) Remove a Todo " << std::endl;
+    std::cout << "4) Modify a Todo " << std::endl;
+    std::cout << "5) Set completed a Todo " << std::endl;
+    std::cout << "6) Display your uncompleted todos in a ToDoList " << std::endl;
+    std::cout << "7) Display all your todos in a ToDoList " << std::endl;
+    std::cout << "************************************************************" << std::endl;
 
     do {
         std::cout << "Choose Your option(press 0 to exit): ";
@@ -49,6 +49,10 @@ int main() {
                 newList.addToDo(todo);
                 break;
             case 3:
+                std::cout << "Please enter the description of the todo you want to remove:";
+                std::cin >> description;
+                std::cout << std::endl;
+                newList.removeTodo(description);
                 break;
             case 4:
                 break;

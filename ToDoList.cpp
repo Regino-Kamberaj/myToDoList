@@ -33,20 +33,20 @@ void ToDoList::addToDo(const ToDo& todo) {
     this->displayToDos();
 }
 
-void ToDoList::removeTodo(const ToDo& todo) {
-    ToDo deletedTodo = findTodo(todo);
+void ToDoList::removeTodo(std::string description) {
+    ToDo deletedTodo = findTodo(std::move(description));
     toDoList.remove(deletedTodo);
     this->displayToDos();
 }
 
-void ToDoList::setTodoCompleted(const ToDo &todo) {
-    ToDo setToDo = findTodo(todo);
+void ToDoList::setTodoCompleted(std::string description) {
+    ToDo setToDo = findTodo(description);
     if (!setToDo.isCompleted())
         setToDo.setCompleted(true);
 }
 
-void ToDoList::modifyTodo(const ToDo &todo, std::string newDesc, bool completed) {
-    ToDo modifyToDo = findTodo(todo);
+void ToDoList::modifyTodo(std::string desc, std::string newDesc, bool completed) {
+    ToDo modifyToDo = findTodo(desc);
     if (!newDesc.empty()) // se lascio newDesc vuota significa che voglio modificare solo il completed
         modifyToDo.setDescription(newDesc);
 
@@ -59,7 +59,7 @@ void ToDoList::modifyTodo(const ToDo &todo, std::string newDesc, bool completed)
 void ToDoList::displayToDos() {
     std::cout << "List of all todos:" << std::endl;
     for(auto & todo:toDoList) {
-        std::cout << "*) " << todo.getDescription() << "\n";
+        std::cout << "-- " << todo.getDescription() << "\n";
         if (!todo.isCompleted())
             std::cout << "To be completed in " << todo.getDate() << "\n";
         else
@@ -72,16 +72,16 @@ void ToDoList::displayUncompletedToDos() {
     std::cout << "List of uncompleted todos:" << std::endl;
     for (auto &todo: toDoList) {
         if (!todo.isCompleted())
-            std::cout << "*) " << todo.getDescription() << " - " << todo.getDate() << std::endl;
+            std::cout << "-- " << todo.getDescription() << " - " << todo.getDate() << std::endl;
     }
 }
 
-const ToDo &ToDoList::findTodo(const ToDo &todo) {
+const ToDo &ToDoList::findTodo(std::string desc) {
     static const ToDo emptyTodo; //forse non la soluzione migliore...
 
     // Scorro la lista tramite un iteratore
     for (auto &it: toDoList) {
-        if (it == todo)
+        if (it.getDescription() == desc)
             return it;
     }
     //altrimenti ritorno un emptyTodo
