@@ -39,7 +39,7 @@ int main() {
                 std::cout << "Please enter the name of the todolist: ";
                 std::cin.ignore();
                 std::getline(std::cin, title);
-                newList = ToDoList(title);
+                newList.setTitle(title);
                 break;
             case 2:
                 std::cout << "Please enter the description of the todo: ";
