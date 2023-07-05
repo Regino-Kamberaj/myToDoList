@@ -43,7 +43,7 @@ void ToDoList::removeTodo(const std::string &description) {
 }
 
 void ToDoList::setTodoCompleted(std::string description) {
-    ToDo setToDo = findTodo(description);
+    ToDo &setToDo = findTodo(description);
     if (!setToDo.isCompleted())
         setToDo.setCompleted();
 }

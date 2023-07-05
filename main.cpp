@@ -73,10 +73,15 @@ int main() {
                     std::cout << "Sorry you did not enter a right option..." << std::endl;
                 break;
             case 5:
+                std::cout << "Please enter the description of the todo you want to be completed: ";
+                std::cin >> description;
+                newList.setTodoCompleted(description);
                 break;
             case 6:
+                newList.displayUncompletedToDos();
                 break;
             case 7:
+                newList.displayToDos();
                 break;
             default:
                 std::cout << "Please enter a option on the list of options!" << std::endl;
