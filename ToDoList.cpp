@@ -33,25 +33,37 @@ void ToDoList::addToDo(const ToDo& todo) {
     this->displayToDos();
 }
 
-void ToDoList::removeTodo(std::string description) {
-    ToDo deletedTodo = findTodo(std::move(description));
-    toDoList.remove(deletedTodo);
-    this->displayToDos();
+void ToDoList::removeTodo(const std::string &description) {
+    ToDo deletedTodo = findTodo(description);
+    if (!deletedTodo.getDescription().empty()) {
+        toDoList.remove(deletedTodo);
+        this->displayToDos();
+    } else
+        std::cout << "Sorry there's not a todo with description: " << description << std::endl;
 }
 
 void ToDoList::setTodoCompleted(std::string description) {
     ToDo setToDo = findTodo(description);
     if (!setToDo.isCompleted())
-        setToDo.setCompleted(true);
+        setToDo.setCompleted();
 }
 
-void ToDoList::modifyTodo(std::string desc, std::string newDesc, bool completed) {
-    ToDo modifyToDo = findTodo(desc);
-    if (!newDesc.empty()) // se lascio newDesc vuota significa che voglio modificare solo il completed
-        modifyToDo.setDescription(newDesc);
+void ToDoList::modifyTodo(std::string desc, std::string newDesc, const Date &newDate) {
+    ToDo &modifyToDo = findTodo(desc);
 
-    modifyToDo.setCompleted(completed);
-    this->displayToDos();
+    if (!modifyToDo.getDescription().empty()) {
+        //per il momento posso modificare solo una cosa alla volta!
+        if (!newDesc.empty()) // se lascio newDesc vuota significa che voglio modificare solo il completed
+            modifyToDo.setDescription(newDesc);
+        else if (!newDate.operator==(Date()))
+            modifyToDo.setDate(newDate);
+        else
+            modifyToDo.setCompleted();
+
+        this->displayToDos();
+    } else
+        std::cout << "Sorry there's not a todo with description: " << desc << std::endl;
+
 }
 
 
@@ -76,8 +88,8 @@ void ToDoList::displayUncompletedToDos() {
     }
 }
 
-const ToDo &ToDoList::findTodo(std::string desc) {
-    static const ToDo emptyTodo; //forse non la soluzione migliore...
+ToDo &ToDoList::findTodo(std::string desc) {
+    static ToDo emptyTodo; //forse non la soluzione migliore...
 
     // Scorro la lista tramite un iteratore
     for (auto &it: toDoList) {

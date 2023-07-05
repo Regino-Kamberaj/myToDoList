@@ -42,15 +42,19 @@ public:
         return completed;
     }
 
-    void setCompleted(bool completed) {
-        ToDo::completed = completed;
+    void setCompleted() {
+        if (!isCompleted())
+            this->completed = true;
+        else
+            this->completed = false;
     }
 
-    bool operator==(const ToDo& otherToDo) {
+    bool operator==(const ToDo &otherToDo) {
         if (this->date == otherToDo.date && this->description == otherToDo.description)
             return true;
         return false;
     }
+
 private:
     Date date;
     std::string description;

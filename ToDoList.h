@@ -25,11 +25,11 @@ public:
 
     void addToDo(const ToDo &todo);
 
-    void removeTodo(std::string description);
+    void removeTodo(const std::string &description);
 
     void setTodoCompleted(std::string description);
 
-    void modifyTodo(std::string desc, std::string newDesc, bool completed);
+    void modifyTodo(std::string desc, std::string newDesc, const Date &newDate);
 
     void displayToDos();
 
@@ -38,7 +38,7 @@ public:
     void displayToDoList(); // todo da mettere??
 
 private:
-    const ToDo &findTodo(std::string description);
+    ToDo &findTodo(std::string description);
 
     std::list<ToDo> toDoList;
     std::string title;

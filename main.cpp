@@ -4,8 +4,7 @@
 
 int main() {
     ToDoList newList;
-    ToDo todo;
-    Date date;
+
     bool stop = false;
     int option;
     std::cout << "**************** Welcome To my Todo List! ******************" << std::endl;
@@ -23,8 +22,11 @@ int main() {
         std::cout << "Choose Your option(press 0 to exit): ";
         std::cin >> option;
 
+        Date date;
         std::string title;
         std::string description;
+        std::string newDescription;
+        char choice;
         int day, month, year;
 
 
@@ -41,20 +43,34 @@ int main() {
             case 2:
                 std::cout << "Please enter the description of the todo: ";
                 std::cin >> description;
-                std::cout << std::endl;
-                std::cout << "Then enter the due line(in dd mm yy format): ";
+                std::cout << "Then enter the due date(in dd mm yy format): ";
                 std::cin >> day >> month >> year;
                 date = Date(day, month, year);
-                todo = ToDo(date, description);
-                newList.addToDo(todo);
+                newList.addToDo(ToDo(date, description));
                 break;
             case 3:
-                std::cout << "Please enter the description of the todo you want to remove:";
+                std::cout << "Please enter the description of the todo you want to remove: ";
                 std::cin >> description;
-                std::cout << std::endl;
                 newList.removeTodo(description);
                 break;
             case 4:
+                std::cout << "Please enter the description of the todo you want to modify: ";
+                std::cin >> description;
+                std::cout << "What do you want to modify?(Enter d for description, g for date or c for completed): ";
+                std::cin >> choice;
+                if (choice == 'd') {
+                    std::cout << "Then please enter your new description: ";
+                    std::cin >> newDescription;
+                    newList.modifyTodo(description, newDescription, date);
+                } else if (choice == 'g') {
+                    std::cout << "Then enter the new date(in dd mm yy format): ";
+                    std::cin >> day >> month >> year;
+                    date = Date(day, month, year);
+                    newList.modifyTodo(description, newDescription, date);
+                } else if (choice == 'c')
+                    newList.modifyTodo(description, newDescription, date);
+                else
+                    std::cout << "Sorry you did not enter a right option..." << std::endl;
                 break;
             case 5:
                 break;
