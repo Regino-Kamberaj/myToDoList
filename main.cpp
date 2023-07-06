@@ -4,22 +4,23 @@
 
 int main() {
     ToDoList newList;
-
     bool stop = false;
     int option;
+
+    std::cout << std::endl;
     std::cout << "**************** Welcome To my Todo List! ******************" << std::endl;
-    std::cout << "List of options: " << std::endl;
-    std::cout << "1) Create your new TodoList " << std::endl;
+    std::cout << "\nList of options: " << std::endl;
+    std::cout << "1) Enter the title for your todolist " << std::endl;
     std::cout << "2) Add a new Todo " << std::endl;
     std::cout << "3) Remove a Todo " << std::endl;
     std::cout << "4) Modify a Todo " << std::endl;
     std::cout << "5) Set completed a Todo " << std::endl;
-    std::cout << "6) Display your uncompleted todos in a ToDoList " << std::endl;
-    std::cout << "7) Display all your todos in a ToDoList " << std::endl;
-    std::cout << "************************************************************" << std::endl;
+    std::cout << "6) Display your uncompleted todos" << std::endl;
+    std::cout << "7) Display all your todos " << std::endl;
 
     do {
-        std::cout << "Choose Your option(press 0 to exit): ";
+        std::cout << "\n************************************************************" << std::endl;
+        std::cout << "\nChoose Your option(press 0 to exit): ";
         std::cin >> option;
 
         Date date;
@@ -33,7 +34,10 @@ int main() {
         switch (option) {
             case 0:
                 stop = true;
-                std::cout << "Goodbye!" << std::endl;
+                std::cout << "\n************************************************************" << std::endl;
+                std::cout << "\nGoodbye!" << std::endl;
+                std::cout << "\n************************************************************" << std::endl;
+
                 break;
             case 1:
                 std::cout << "Please enter the name of the todolist: ";

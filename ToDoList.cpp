@@ -69,7 +69,7 @@ void ToDoList::modifyTodo(const std::string &desc, const std::string &newDesc, c
 
 
 void ToDoList::displayAllToDos() {
-    std::cout << "List of all todos:" << std::endl;
+    std::cout << "\nList of all todos:" << std::endl;
     for (auto &todo: toDoList) {
         std::cout << "-- " << todo.getDescription() << " - ";
         if (!todo.isCompleted())
@@ -81,7 +81,7 @@ void ToDoList::displayAllToDos() {
 
 
 void ToDoList::displayUncompletedToDos() {
-    std::cout << "List of uncompleted todos:" << std::endl;
+    std::cout << "\nList of uncompleted todos:" << std::endl;
     for (auto &todo: toDoList) {
         if (!todo.isCompleted())
             std::cout << "-- " << todo.getDescription() << " - " << todo.getDate() << std::endl;
