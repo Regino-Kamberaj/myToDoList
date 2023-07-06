@@ -43,6 +43,8 @@ public:
 
     static void loadFromFile(const std::string &fileName, ToDoList &newList);
 
+    void removeTodos();
+
 private:
     ToDo &findTodo(const std::string &description);
 

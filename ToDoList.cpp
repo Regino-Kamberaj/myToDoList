@@ -131,13 +131,17 @@ void ToDoList::loadFromFile(const std::string &fileName, ToDoList &newList) {
             std::getline(ss, desc, '-');
             std::getline(ss, dateString, '-');
             std::getline(ss, completed, '.');
-            bool isCompleted = (completed == "completed") ? true : false;
+            bool isCompleted = (completed == " completed") ? true : false;
             Date dueDate = ToDo::getDateFromString(dateString);
             newList.toDoList.emplace_back(dueDate, desc, isCompleted);
         }
         file.close();
     } else
         throw (std::runtime_error) "File not found!";
+}
+
+void ToDoList::removeTodos() {
+    toDoList.clear();
 }
 
 
