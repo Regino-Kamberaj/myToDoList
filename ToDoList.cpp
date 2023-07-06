@@ -69,7 +69,7 @@ void ToDoList::modifyTodo(const std::string &desc, const std::string &newDesc, c
 
 
 void ToDoList::displayAllToDos() {
-    std::cout << "\nList of all todos:" << std::endl;
+    std::cout << "\nList of all todos from " << this->title << ": " << std::endl;
     for (auto &todo: toDoList) {
         std::cout << "-- " << todo.getDescription() << " - ";
         if (!todo.isCompleted())
@@ -99,5 +99,47 @@ ToDo &ToDoList::findTodo(const std::string &desc) {
     //altrimenti ritorno un emptyTodo
     return emptyTodo;
 }
+
+void ToDoList::saveToFile(const std::string &fileName) const {
+    std::ofstream file(fileName);
+
+    if (file.is_open()) {
+        file << title << std::endl;
+        for (const auto &todo: toDoList) {
+            file << todo.getDescription() << "- " << todo.getDate() << " - ";
+            if (todo.isCompleted())
+                file << "completed." << std::endl;
+            else
+                file << "uncompleted." << std::endl;
+        }
+        file.close();
+    } else
+        throw (std::runtime_error) "File not saved";
+}
+
+void ToDoList::loadFromFile(const std::string &fileName, ToDoList &newList) {
+    std::ifstream file(fileName);
+
+    if (file.is_open()) {
+        //prendi il titolo
+        std::string line;
+        std::getline(file, newList.title);
+        //prendi i todo fino a quando finiscono
+        while (std::getline(file, line)) {
+            std::stringstream ss(line);
+            std::string desc, dateString, completed;
+            std::getline(ss, desc, '-');
+            std::getline(ss, dateString, '-');
+            std::getline(ss, completed, '.');
+            bool isCompleted = (completed == "completed") ? true : false;
+            Date dueDate = ToDo::getDateFromString(dateString);
+            newList.toDoList.emplace_back(dueDate, desc, isCompleted);
+        }
+        file.close();
+    } else
+        throw (std::runtime_error) "File not found!";
+}
+
+
 
 

@@ -17,6 +17,8 @@ int main() {
     std::cout << "5) Set completed a Todo " << std::endl;
     std::cout << "6) Display your uncompleted todos" << std::endl;
     std::cout << "7) Display all your todos " << std::endl;
+    std::cout << "8) Save your todos in a file" << std::endl;
+    std::cout << "9) Upload your todos from a file" << std::endl;
 
     do {
         std::cout << "\n************************************************************" << std::endl;
@@ -27,6 +29,7 @@ int main() {
         std::string title;
         std::string description;
         std::string newDescription;
+        std::string fileName;
         char choice;
         int day, month, year;
 
@@ -35,7 +38,7 @@ int main() {
             case 0:
                 stop = true;
                 std::cout << "\n************************************************************" << std::endl;
-                std::cout << "\nGoodbye!" << std::endl;
+                std::cout << "\nThank you for using my application...\nGoodbye!" << std::endl;
                 std::cout << "\n************************************************************" << std::endl;
 
                 break;
@@ -92,6 +95,17 @@ int main() {
                 break;
             case 7:
                 newList.displayAllToDos();
+                break;
+            case 8:
+                newList.saveToFile(newList.getTitle() + ".txt");
+                std::cout << "Your file has been successfully saved!" << std::endl;
+                break;
+            case 9:
+                std::cout << "Please enter the name of the file:";
+                std::cin.ignore();
+                std::getline(std::cin, fileName);
+                ToDoList::loadFromFile(fileName, newList);
+                std::cout << "Your file has been successfully loaded!" << std::endl;
                 break;
             default:
                 std::cout << "Please enter a option on the list of options!" << std::endl;

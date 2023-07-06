@@ -12,8 +12,10 @@
 
 class ToDo {
 public:
-    ToDo(const Date &date, std::string description) : date(date), description(std::move(description)), completed(
-            false) {
+    ToDo(const Date &date, std::string description, bool completed = false) : date(date),
+                                                                              description(std::move(description)),
+                                                                              completed(
+                                                                                      completed) {
         // More code here...
     }
 
@@ -28,6 +30,20 @@ public:
 
     void setDate(const Date &date) {
         ToDo::date = date;
+    }
+
+    //funzione per ottenere un Date da una string, lo static è una forzatura ma necessaria
+    static Date getDateFromString(std::string dateString) {
+        std::istringstream iss(dateString);
+        std::string token;
+        int values[3];
+        int i = 0;
+
+        while (std::getline(iss, token, '/')) {
+            values[i++] = std::stoi(token);
+        }
+
+        return Date(values[0], values[1], values[2]);
     }
 
     const std::string &getDescription() const {

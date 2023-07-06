@@ -7,6 +7,7 @@
 
 #include "ToDo.h"
 #include <list>
+#include <fstream>
 
 class ToDoList {
 public:
@@ -36,6 +37,11 @@ public:
     void displayUncompletedToDos();
 
     void displayToDoList(); // todo da mettere??
+
+    //metodi per salvare e caricare file da disco
+    void saveToFile(const std::string &fileName) const;
+
+    static void loadFromFile(const std::string &fileName, ToDoList &newList);
 
 private:
     ToDo &findTodo(const std::string &description);
