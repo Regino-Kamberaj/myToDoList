@@ -6,7 +6,7 @@
 /home/regino/CLionProjects/myToDoList/cmake-build-debug/CMakeFiles/install.dir
 /home/regino/CLionProjects/myToDoList/cmake-build-debug/CMakeFiles/install/local.dir
 /home/regino/CLionProjects/myToDoList/cmake-build-debug/CMakeFiles/install/strip.dir
-/home/regino/CLionProjects/myToDoList/cmake-build-debug/test/CMakeFiles/runAllTests.dir
+/home/regino/CLionProjects/myToDoList/cmake-build-debug/test/CMakeFiles/runToDoListTests.dir
 /home/regino/CLionProjects/myToDoList/cmake-build-debug/test/CMakeFiles/edit_cache.dir
 /home/regino/CLionProjects/myToDoList/cmake-build-debug/test/CMakeFiles/rebuild_cache.dir
 /home/regino/CLionProjects/myToDoList/cmake-build-debug/test/CMakeFiles/list_install_components.dir

@@ -15,24 +15,12 @@ int Date::getDay() const {
     return day;
 }
 
-void Date::setDay(int day) {
-    Date::day = day;
-}
-
 int Date::getMonth() const {
     return month;
 }
 
-void Date::setMonth(int month) {
-    Date::month = month;
-}
-
 int Date::getYear() const {
     return year;
-}
-
-void Date::setYear(int year) {
-    Date::year = year;
 }
 
 bool Date::isLeap(const int &year) {
@@ -75,7 +63,7 @@ int Date::getDaysOfMonth(const int &month, const int &year) {
 
 
 bool Date::validDate(const int &day, const int &month, const int &year) {
-    if (year >= 2023 && month > 0 && month < 13 && day > 0 && day <= getDaysOfMonth(month, year))
+    if (year >= 2000 && year <= 2100 && month > 0 && month < 13 && day > 0 && day <= getDaysOfMonth(month, year))
         return true;
     else
         return false;

@@ -186,37 +186,58 @@ build install/strip: phony CMakeFiles/install/strip.util
 # =============================================================================
 
 # =============================================================================
-# Object build statements for EXECUTABLE target runAllTests
+# Object build statements for EXECUTABLE target runToDoListTests
 
 
 #############################################
-# Order-only phony target for runAllTests
+# Order-only phony target for runToDoListTests
 
-build cmake_object_order_depends_target_runAllTests: phony || cmake_object_order_depends_target_core cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
+build cmake_object_order_depends_target_runToDoListTests: phony || cmake_object_order_depends_target_core cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
 
-build test/CMakeFiles/runAllTests.dir/runAllTests.cpp.o: CXX_COMPILER__runAllTests_Debug /home/regino/CLionProjects/myToDoList/test/runAllTests.cpp || cmake_object_order_depends_target_runAllTests
-  DEP_FILE = test/CMakeFiles/runAllTests.dir/runAllTests.cpp.o.d
+build test/CMakeFiles/runToDoListTests.dir/runAllTests.cpp.o: CXX_COMPILER__runToDoListTests_Debug /home/regino/CLionProjects/myToDoList/test/runAllTests.cpp || cmake_object_order_depends_target_runToDoListTests
+  DEP_FILE = test/CMakeFiles/runToDoListTests.dir/runAllTests.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   INCLUDES = -isystem /home/regino/CLionProjects/myToDoList/test/lib/googletest/googletest/include -isystem /home/regino/CLionProjects/myToDoList/test/lib/googletest/googletest
-  OBJECT_DIR = test/CMakeFiles/runAllTests.dir
-  OBJECT_FILE_DIR = test/CMakeFiles/runAllTests.dir
+  OBJECT_DIR = test/CMakeFiles/runToDoListTests.dir
+  OBJECT_FILE_DIR = test/CMakeFiles/runToDoListTests.dir
+
+build test/CMakeFiles/runToDoListTests.dir/DateTest.cpp.o: CXX_COMPILER__runToDoListTests_Debug /home/regino/CLionProjects/myToDoList/test/DateTest.cpp || cmake_object_order_depends_target_runToDoListTests
+  DEP_FILE = test/CMakeFiles/runToDoListTests.dir/DateTest.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -isystem /home/regino/CLionProjects/myToDoList/test/lib/googletest/googletest/include -isystem /home/regino/CLionProjects/myToDoList/test/lib/googletest/googletest
+  OBJECT_DIR = test/CMakeFiles/runToDoListTests.dir
+  OBJECT_FILE_DIR = test/CMakeFiles/runToDoListTests.dir
+
+build test/CMakeFiles/runToDoListTests.dir/ToDoTest.cpp.o: CXX_COMPILER__runToDoListTests_Debug /home/regino/CLionProjects/myToDoList/test/ToDoTest.cpp || cmake_object_order_depends_target_runToDoListTests
+  DEP_FILE = test/CMakeFiles/runToDoListTests.dir/ToDoTest.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -isystem /home/regino/CLionProjects/myToDoList/test/lib/googletest/googletest/include -isystem /home/regino/CLionProjects/myToDoList/test/lib/googletest/googletest
+  OBJECT_DIR = test/CMakeFiles/runToDoListTests.dir
+  OBJECT_FILE_DIR = test/CMakeFiles/runToDoListTests.dir
+
+build test/CMakeFiles/runToDoListTests.dir/ToDoListTest.cpp.o: CXX_COMPILER__runToDoListTests_Debug /home/regino/CLionProjects/myToDoList/test/ToDoListTest.cpp || cmake_object_order_depends_target_runToDoListTests
+  DEP_FILE = test/CMakeFiles/runToDoListTests.dir/ToDoListTest.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -isystem /home/regino/CLionProjects/myToDoList/test/lib/googletest/googletest/include -isystem /home/regino/CLionProjects/myToDoList/test/lib/googletest/googletest
+  OBJECT_DIR = test/CMakeFiles/runToDoListTests.dir
+  OBJECT_FILE_DIR = test/CMakeFiles/runToDoListTests.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target runAllTests
+# Link build statements for EXECUTABLE target runToDoListTests
 
 
 #############################################
-# Link the executable test/runAllTests
+# Link the executable test/runToDoListTests
 
-build test/runAllTests: CXX_EXECUTABLE_LINKER__runAllTests_Debug test/CMakeFiles/runAllTests.dir/runAllTests.cpp.o | lib/libgtest.a lib/libgtest_main.a libcore.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a libcore.a
+build test/runToDoListTests: CXX_EXECUTABLE_LINKER__runToDoListTests_Debug test/CMakeFiles/runToDoListTests.dir/runAllTests.cpp.o test/CMakeFiles/runToDoListTests.dir/DateTest.cpp.o test/CMakeFiles/runToDoListTests.dir/ToDoTest.cpp.o test/CMakeFiles/runToDoListTests.dir/ToDoListTest.cpp.o | lib/libgtest.a lib/libgtest_main.a libcore.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a libcore.a
   FLAGS = -g
   LINK_LIBRARIES = lib/libgtest.a  lib/libgtest_main.a  libcore.a  lib/libgtest.a
-  OBJECT_DIR = test/CMakeFiles/runAllTests.dir
+  OBJECT_DIR = test/CMakeFiles/runToDoListTests.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = test/runAllTests
-  TARGET_PDB = runAllTests.dbg
+  TARGET_FILE = test/runToDoListTests
+  TARGET_PDB = runToDoListTests.dbg
 
 
 #############################################
@@ -642,7 +663,7 @@ build libgtest.a: phony lib/libgtest.a
 
 build libgtest_main.a: phony lib/libgtest_main.a
 
-build runAllTests: phony test/runAllTests
+build runToDoListTests: phony test/runToDoListTests
 
 # =============================================================================
 # Folder targets.
@@ -659,7 +680,7 @@ build all: phony myToDoList libcore.a test/all
 #############################################
 # Folder: /home/regino/CLionProjects/myToDoList/cmake-build-debug/test
 
-build test/all: phony test/runAllTests test/lib/googletest/all
+build test/all: phony test/runToDoListTests test/lib/googletest/all
 
 # =============================================================================
 
