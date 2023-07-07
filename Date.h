@@ -9,6 +9,7 @@
 class Date {
 public:
     Date(int day, int month, int year);
+
     Date() : day(0), month(0), year(0) {}
 
     int getDay() const;
@@ -17,13 +18,20 @@ public:
 
     int getYear() const;
 
+    void setDay(int day);
+
+    void setMonth(int month);
+
+    void setYear(int year);
+
     // Function to see if a year is leap
     static bool isLeap(const int &year);
 
     // Function to get the days of one month
     static int getDaysOfMonth(const int &month, const int &year);
 
-    bool operator==(const Date& date) const;
+    bool operator==(const Date &date) const;
+
 private:
     // Function to see if a date is valid
     static bool validDate(const int &day, const int &month, const int &year);
