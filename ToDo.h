@@ -14,8 +14,7 @@ class ToDo {
 public:
     ToDo(const Date &date, std::string description, bool completed = false) : date(date),
                                                                               description(std::move(description)),
-                                                                              completed(
-                                                                                      completed) {
+                                                                              completed(completed) {
         // More code here...
     }
 
