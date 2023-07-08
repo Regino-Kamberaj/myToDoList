@@ -28,7 +28,9 @@ public:
 
     void removeTodo(const std::string &description);
 
-    void setTodoCompleted(std::string description);
+    void removeTodos();
+
+    void setTodoCompleted(const std::string &description);
 
     void modifyTodo(const std::string &desc, const std::string &newDesc, const Date &newDate);
 
@@ -36,14 +38,10 @@ public:
 
     void displayUncompletedToDos();
 
-    void displayToDoList(); // todo da mettere??
-
     //metodi per salvare e caricare file da disco
     void saveToFile(const std::string &fileName) const;
 
     static void loadFromFile(const std::string &fileName, ToDoList &newList);
-
-    void removeTodos();
 
 private:
     ToDo &findTodo(const std::string &description);

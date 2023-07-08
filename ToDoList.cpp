@@ -2,7 +2,6 @@
 // Created by regino on 29/06/23.
 //
 
-#include <algorithm>
 #include <iostream>
 #include <utility>
 #include "ToDoList.h"
@@ -42,8 +41,13 @@ void ToDoList::removeTodo(const std::string &description) {
         std::cout << "Sorry there's not a todo with description: " << description << std::endl;
 }
 
-void ToDoList::setTodoCompleted(std::string description) {
-    ToDo &setToDo = findTodo(std::move(description));
+void ToDoList::removeTodos() {
+    toDoList.clear();
+}
+
+
+void ToDoList::setTodoCompleted(const std::string &description) {
+    ToDo &setToDo = findTodo(description);
     if (!setToDo.isCompleted())
         setToDo.setCompleted();
     this->displayAllToDos();
@@ -140,9 +144,6 @@ void ToDoList::loadFromFile(const std::string &fileName, ToDoList &newList) {
         throw (std::runtime_error) "File not found!";
 }
 
-void ToDoList::removeTodos() {
-    toDoList.clear();
-}
 
 
 

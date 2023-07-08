@@ -222,6 +222,13 @@ build test/CMakeFiles/runToDoListTests.dir/ToDoListTest.cpp.o: CXX_COMPILER__run
   OBJECT_DIR = test/CMakeFiles/runToDoListTests.dir
   OBJECT_FILE_DIR = test/CMakeFiles/runToDoListTests.dir
 
+build test/CMakeFiles/runToDoListTests.dir/ToDoListFixture.cpp.o: CXX_COMPILER__runToDoListTests_Debug /home/regino/CLionProjects/myToDoList/test/ToDoListFixture.cpp || cmake_object_order_depends_target_runToDoListTests
+  DEP_FILE = test/CMakeFiles/runToDoListTests.dir/ToDoListFixture.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  INCLUDES = -isystem /home/regino/CLionProjects/myToDoList/test/lib/googletest/googletest/include -isystem /home/regino/CLionProjects/myToDoList/test/lib/googletest/googletest
+  OBJECT_DIR = test/CMakeFiles/runToDoListTests.dir
+  OBJECT_FILE_DIR = test/CMakeFiles/runToDoListTests.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target runToDoListTests
@@ -230,7 +237,7 @@ build test/CMakeFiles/runToDoListTests.dir/ToDoListTest.cpp.o: CXX_COMPILER__run
 #############################################
 # Link the executable test/runToDoListTests
 
-build test/runToDoListTests: CXX_EXECUTABLE_LINKER__runToDoListTests_Debug test/CMakeFiles/runToDoListTests.dir/runAllTests.cpp.o test/CMakeFiles/runToDoListTests.dir/DateTest.cpp.o test/CMakeFiles/runToDoListTests.dir/ToDoTest.cpp.o test/CMakeFiles/runToDoListTests.dir/ToDoListTest.cpp.o | lib/libgtest.a lib/libgtest_main.a libcore.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a libcore.a
+build test/runToDoListTests: CXX_EXECUTABLE_LINKER__runToDoListTests_Debug test/CMakeFiles/runToDoListTests.dir/runAllTests.cpp.o test/CMakeFiles/runToDoListTests.dir/DateTest.cpp.o test/CMakeFiles/runToDoListTests.dir/ToDoTest.cpp.o test/CMakeFiles/runToDoListTests.dir/ToDoListTest.cpp.o test/CMakeFiles/runToDoListTests.dir/ToDoListFixture.cpp.o | lib/libgtest.a lib/libgtest_main.a libcore.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a libcore.a
   FLAGS = -g
   LINK_LIBRARIES = lib/libgtest.a  lib/libgtest_main.a  libcore.a  lib/libgtest.a
   OBJECT_DIR = test/CMakeFiles/runToDoListTests.dir
