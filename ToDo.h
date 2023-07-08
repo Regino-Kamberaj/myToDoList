@@ -23,7 +23,8 @@ public:
 
     std::string getDate() const {
         std::stringstream s;
-        s << date.getDay() << "/" << date.getMonth() << "/" << date.getYear();
+        if (date.getDay() != 0)
+            s << date.getDay() << "/" << date.getMonth() << "/" << date.getYear();
         return s.str();;
     }
 

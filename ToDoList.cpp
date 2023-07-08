@@ -33,7 +33,7 @@ void ToDoList::addToDo(const ToDo& todo) {
 }
 
 void ToDoList::removeTodo(const std::string &description) {
-    ToDo deletedTodo = findTodo(description);
+    ToDo deletedTodo = helperFindTodo(description);
     if (!deletedTodo.getDescription().empty()) {
         toDoList.remove(deletedTodo);
         this->displayAllToDos();
@@ -47,14 +47,14 @@ void ToDoList::removeTodos() {
 
 
 void ToDoList::setTodoCompleted(const std::string &description) {
-    ToDo &setToDo = findTodo(description);
+    ToDo &setToDo = helperFindTodo(description);
     if (!setToDo.isCompleted())
         setToDo.setCompleted();
     this->displayAllToDos();
 }
 
 void ToDoList::modifyTodo(const std::string &desc, const std::string &newDesc, const Date &newDate) {
-    ToDo &modifyToDo = findTodo(desc);
+    ToDo &modifyToDo = helperFindTodo(desc);
 
     if (!modifyToDo.getDescription().empty()) {
         //per il momento posso modificare solo una cosa alla volta!
@@ -92,12 +92,12 @@ void ToDoList::displayUncompletedToDos() {
     }
 }
 
-ToDo &ToDoList::findTodo(const std::string &desc) {
+ToDo &ToDoList::helperFindTodo(const std::string &description) {
     static ToDo emptyTodo; //forse non la soluzione migliore...
 
     // Scorro la lista tramite un iteratore
     for (auto &it: toDoList) {
-        if (it.getDescription() == desc)
+        if (it.getDescription() == description)
             return it;
     }
     //altrimenti ritorno un emptyTodo
@@ -142,6 +142,10 @@ void ToDoList::loadFromFile(const std::string &fileName, ToDoList &newList) {
         file.close();
     } else
         throw (std::runtime_error) "File not found!";
+}
+
+ToDo &ToDoList::findTodo(const std::string &description) {
+    return ToDoList::helperFindTodo(description);
 }
 
 

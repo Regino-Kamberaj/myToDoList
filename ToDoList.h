@@ -43,8 +43,9 @@ public:
 
     static void loadFromFile(const std::string &fileName, ToDoList &newList);
 
-private:
     ToDo &findTodo(const std::string &description);
+private:
+    ToDo &helperFindTodo(const std::string &description);
 
     std::list<ToDo> toDoList;
     std::string title;

@@ -80,3 +80,17 @@ TEST_F(ToDoListFixture, SaveAndLoadFromFileTest) {
 
     std::remove(fileName.c_str()); //mi serve ad eliminare il file --> c_str() mi serve per accedere al percorso
 }
+
+TEST_F(ToDoListFixture, FindTodoTest) {
+    ToDo todo = todolist.findTodo("Scrivere mail al professore");
+    EXPECT_EQ(todo.getDescription(), "Scrivere mail al professore");
+    EXPECT_EQ(todo.getDate(), "9/7/2023");
+    EXPECT_FALSE(todo.isCompleted());
+
+    //Testiamo poi un todo non esistente
+    ToDo todo2 = todolist.findTodo("Scrivere ciao al professore");
+    EXPECT_EQ(todo2.getDescription(), "");
+    EXPECT_EQ(todo2.getDate(), "");
+    EXPECT_FALSE(todo2.isCompleted());
+
+}

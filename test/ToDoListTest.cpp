@@ -16,3 +16,4 @@ TEST(ToDoListTest, AddTodoTest) {
     EXPECT_EQ(toDoList.getToDoList().size(), 1);
     EXPECT_EQ(toDoList.getToDoList().front().getDescription(), "Finire il lab di programmazione");
 }
+
