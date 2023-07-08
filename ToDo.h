@@ -32,7 +32,7 @@ public:
     }
 
     //funzione per ottenere un Date da una string, lo static è una forzatura ma necessaria
-    static Date getDateFromString(std::string dateString) {
+    static Date getDateFromString(const std::string &dateString) {
         std::istringstream iss(dateString);
         std::string token;
         int values[3];

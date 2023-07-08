@@ -23,10 +23,22 @@ int Date::getYear() const {
     return year;
 }
 
+void Date::setDay(int day) {
+    Date::day = day;
+}
+
+void Date::setMonth(int month) {
+    Date::month = month;
+}
+
+void Date::setYear(int year) {
+    Date::year = year;
+}
+
 bool Date::isLeap(const int &year) {
-    if(year % 4 == 0) {
-        if(year % 100 == 0){
-            if(year % 400 == 0)
+    if (year % 4 == 0) {
+        if (year % 100 == 0) {
+            if (year % 400 == 0)
                 return true;
             else
                 return false;
@@ -74,3 +86,4 @@ bool Date::operator==(const Date &date) const {
         return true;
     return false;
 }
+

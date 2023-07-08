@@ -28,7 +28,7 @@ TEST(DateTest, IsLeapTest) {
     //Dunque testiamo una Data in generale
     Date date(15, 9, 2000);
     ASSERT_TRUE(date.isLeap(date.getYear()));
-    date.setYear(2004);
+    date.setYear(2003);
     ASSERT_FALSE(date.isLeap(date.getYear()));
 }
 
@@ -44,7 +44,7 @@ TEST(DateTest, GetDaysOfMonthTest) {
     ASSERT_EQ(date.getDaysOfMonth(date.getMonth(), date.getYear()), 29);
 }
 
-TEST(DateTest, EqualOperatorTest) {
+TEST(DateTest, EqualityOperatorTest) {
     Date d1(10, 7, 2023);
     Date d2(10, 7, 2023);
 
