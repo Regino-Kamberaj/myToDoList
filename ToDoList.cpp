@@ -38,6 +38,8 @@ void ToDoList::removeTodo(const std::string &description) {
     if (!deletedTodo.getDescription().empty()) {
         toDoList.remove(deletedTodo);
         this->numberOfTodos--;
+        if (deletedTodo.isCompleted())
+            this->numberOfCompletedTodos--;
         this->displayAllToDos();
     } else
         std::cout << "Sorry there's not a todo with description: " << description << std::endl;
@@ -45,6 +47,8 @@ void ToDoList::removeTodo(const std::string &description) {
 
 void ToDoList::removeTodos() {
     toDoList.clear();
+    this->numberOfTodos = 0;
+    this->numberOfCompletedTodos = 0;
 }
 
 
@@ -107,7 +111,7 @@ void ToDoList::displayUncompletedToDos() {
     else if (getNumberOfUncompletedTodos() > 1)
         std::cout << "\nThere are " << getNumberOfUncompletedTodos() << " todos to complete" << std::endl;
     else
-        std::cout << "\nThere are not todos to complete!" << std::endl;
+        std::cout << "\nThere are not todos to complete!    " << std::endl;
 
 }
 

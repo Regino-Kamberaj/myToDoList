@@ -10,7 +10,7 @@ int main() {
     std::cout << std::endl;
     std::cout << "**************** Welcome To my Todo List! ******************" << std::endl;
     std::cout << "\nList of options: " << std::endl;
-    std::cout << "1) Enter the title for your todolist " << std::endl;
+    std::cout << "1) Create your NEW todolist " << std::endl;
     std::cout << "2) Add a new Todo " << std::endl;
     std::cout << "3) Remove a Todo " << std::endl;
     std::cout << "4) Modify a Todo " << std::endl;
@@ -22,7 +22,7 @@ int main() {
 
     do {
         std::cout << "\n************************************************************" << std::endl;
-        std::cout << "\nChoose Your option(press 0 to exit): ";
+        std::cout << "\nChoose Your option(press 0 to exit and 10 to see the list again): ";
         std::cin >> option;
 
         Date date;
@@ -108,6 +108,18 @@ int main() {
                 std::getline(std::cin, fileName);
                 ToDoList::loadFromFile(fileName, newList);
                 std::cout << "Your file has been successfully loaded!" << std::endl;
+                break;
+            case 10:
+                std::cout << "\nList of options: " << std::endl;
+                std::cout << "1) Create your NEW todolist " << std::endl;
+                std::cout << "2) Add a new Todo " << std::endl;
+                std::cout << "3) Remove a Todo " << std::endl;
+                std::cout << "4) Modify a Todo " << std::endl;
+                std::cout << "5) Set completed a Todo " << std::endl;
+                std::cout << "6) Display your uncompleted todos" << std::endl;
+                std::cout << "7) Display all your todos " << std::endl;
+                std::cout << "8) Save your todos in a file" << std::endl;
+                std::cout << "9) Upload your todos from a file" << std::endl;
                 break;
             default:
                 std::cout << "Please enter a option on the list of options!" << std::endl;
