@@ -38,18 +38,24 @@ public:
 
     void displayUncompletedToDos();
 
+    ToDo &findTodo(const std::string &description);
+
+    int getNumberOfTodos() const;
+
+    int getNumberOfUncompletedTodos() const;
+
     //metodi per salvare e caricare file da disco
     void saveToFile(const std::string &fileName) const;
 
     static void loadFromFile(const std::string &fileName, ToDoList &newList);
 
-    ToDo &findTodo(const std::string &description);
 private:
     ToDo &helperFindTodo(const std::string &description);
 
     std::list<ToDo> toDoList;
     std::string title;
-
+    int numberOfTodos{0};
+    int numberOfCompletedTodos{0};
 };
 
 

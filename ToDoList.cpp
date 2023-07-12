@@ -29,6 +29,7 @@ void ToDoList::setTitle(const std::string &title) {
 void ToDoList::addToDo(const ToDo& todo) {
     // Add it to the end of the todolist
     toDoList.push_back(todo);
+    this->numberOfTodos++;
     this->displayAllToDos();
 }
 
@@ -36,6 +37,7 @@ void ToDoList::removeTodo(const std::string &description) {
     ToDo deletedTodo = helperFindTodo(description);
     if (!deletedTodo.getDescription().empty()) {
         toDoList.remove(deletedTodo);
+        this->numberOfTodos--;
         this->displayAllToDos();
     } else
         std::cout << "Sorry there's not a todo with description: " << description << std::endl;
@@ -48,8 +50,10 @@ void ToDoList::removeTodos() {
 
 void ToDoList::setTodoCompleted(const std::string &description) {
     ToDo &setToDo = helperFindTodo(description);
-    if (!setToDo.isCompleted())
+    if (!setToDo.isCompleted()) {
         setToDo.setCompleted();
+        this->numberOfCompletedTodos++;
+    }
     this->displayAllToDos();
 }
 
@@ -81,6 +85,14 @@ void ToDoList::displayAllToDos() {
         else
             std::cout << "Already done!" << std::endl;
     }
+    if (getNumberOfTodos() == 1)
+        std::cout << "\nYou have " << this->numberOfTodos << " todo and "
+                  << getNumberOfUncompletedTodos() << " to complete" << std::endl;
+    else if (getNumberOfTodos() > 1)
+        std::cout << "\nYou have " << this->numberOfTodos << " todos and "
+                  << getNumberOfUncompletedTodos() << " to complete" << std::endl;
+    else
+        std::cout << "\nThere are not todos at the moment!" << std::endl;
 }
 
 
@@ -90,6 +102,13 @@ void ToDoList::displayUncompletedToDos() {
         if (!todo.isCompleted())
             std::cout << "-- " << todo.getDescription() << " - " << todo.getDate() << std::endl;
     }
+    if (getNumberOfUncompletedTodos() == 1)
+        std::cout << "\nThere is " << getNumberOfUncompletedTodos() << " todo to complete" << std::endl;
+    else if (getNumberOfUncompletedTodos() > 1)
+        std::cout << "\nThere are " << getNumberOfUncompletedTodos() << " todos to complete" << std::endl;
+    else
+        std::cout << "\nThere are not todos to complete!" << std::endl;
+
 }
 
 ToDo &ToDoList::helperFindTodo(const std::string &description) {
@@ -147,6 +166,15 @@ void ToDoList::loadFromFile(const std::string &fileName, ToDoList &newList) {
 ToDo &ToDoList::findTodo(const std::string &description) {
     return ToDoList::helperFindTodo(description);
 }
+
+int ToDoList::getNumberOfTodos() const {
+    return numberOfTodos;
+}
+
+int ToDoList::getNumberOfUncompletedTodos() const {
+    return this->numberOfTodos - this->numberOfCompletedTodos;
+}
+
 
 
 
