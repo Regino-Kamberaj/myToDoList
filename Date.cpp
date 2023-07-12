@@ -8,7 +8,7 @@
 Date::Date(int day, int month, int year): day(day), month(month), year(year) {
     // More code here...
     if (!validDate(day, month, year))
-        throw std::out_of_range("Data non valida!");
+        throw std::out_of_range("Date not valid!");
 }
 
 int Date::getDay() const {
@@ -24,15 +24,26 @@ int Date::getYear() const {
 }
 
 void Date::setDay(int day) {
-    Date::day = day;
+    if (validDay(day))
+        Date::day = day;
+    else
+        throw std::out_of_range("Day not valid!");
+
 }
 
 void Date::setMonth(int month) {
-    Date::month = month;
+    if (validMonth(month))
+        Date::month = month;
+    else
+        throw std::out_of_range("Month not valid!");
+
 }
 
 void Date::setYear(int year) {
-    Date::year = year;
+    if (validYear(year))
+        Date::year = year;
+    else
+        throw std::out_of_range("Year out of range!");
 }
 
 bool Date::isLeap(const int &year) {
@@ -75,7 +86,7 @@ int Date::getDaysOfMonth(const int &month, const int &year) {
 
 
 bool Date::validDate(const int &day, const int &month, const int &year) {
-    if (year >= 2000 && year <= 2100 && month > 0 && month < 13 && day > 0 && day <= getDaysOfMonth(month, year))
+    if (validDay(day) && validMonth(month) && validYear(year))
         return true;
     else
         return false;
@@ -86,4 +97,24 @@ bool Date::operator==(const Date &date) const {
         return true;
     return false;
 }
+
+bool Date::validDay(const int &day) const {
+    if (day > 0 && day <= getDaysOfMonth(month, year))
+        return true;
+    return false;
+}
+
+bool Date::validMonth(const int &month) {
+    if (month > 0 && month < 13)
+        return true;
+    return false;
+}
+
+bool Date::validYear(const int &year) {
+    if (year >= 2000 && year <= 2100)
+        return true;
+    return false;
+}
+
+
 

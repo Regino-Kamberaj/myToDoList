@@ -34,7 +34,14 @@ public:
 
 private:
     // Function to see if a date is valid
-    static bool validDate(const int &day, const int &month, const int &year);
+    bool validDate(const int &day, const int &month, const int &year);
+
+    bool validDay(const int &day) const;
+
+    bool validMonth(const int &month);
+
+    bool validYear(const int &year);
+
 
     int day;
     int month;

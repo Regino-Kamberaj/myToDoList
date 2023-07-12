@@ -64,3 +64,13 @@ TEST(DateTest, InvalidDateTest) {
     EXPECT_THROW(Date date(10, 7, 2200), std::out_of_range);
 }
 
+TEST(DateTest, SettersDateTest) {
+    Date date(10, 12, 2023);
+    EXPECT_THROW(date.setDay(340), std::out_of_range);
+    EXPECT_THROW(date.setMonth(0), std::out_of_range);
+    EXPECT_THROW(date.setYear(30000), std::out_of_range);
+    date.setDay(15);
+    date.setMonth(9);
+    date.setYear(2000);
+    ASSERT_EQ(date, Date(15, 9, 2000));
+}
