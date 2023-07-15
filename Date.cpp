@@ -5,10 +5,12 @@
 #include "Date.h"
 #include <stdexcept>
 
-Date::Date(int day, int month, int year): day(day), month(month), year(year) {
-    // More code here...
+Date::Date(int day, int month, int year) {
     if (!validDate(day, month, year))
-        throw std::out_of_range("Date not valid!");
+        throw std::out_of_range("Date not valid!"); //controllare prima di assegnare
+    this->day = day;
+    this->month = month;
+    this->year = year;
 }
 
 int Date::getDay() const {
@@ -46,7 +48,7 @@ void Date::setYear(int year) {
         throw std::out_of_range("Year out of range!");
 }
 
-bool Date::isLeap(const int &year) {
+bool Date::isLeap(const int &year) const {
     if (year % 4 == 0) {
         if (year % 100 == 0) {
             if (year % 400 == 0)
@@ -60,7 +62,7 @@ bool Date::isLeap(const int &year) {
 }
 
 
-int Date::getDaysOfMonth(const int &month, const int &year) {
+int Date::getDaysOfMonth(const int &month, const int &year) const {
     switch (month) {
         case 2:
             // February

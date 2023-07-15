@@ -24,13 +24,13 @@ public:
 
     void setYear(int year);
 
-    // Function to see if a year is leap
-    static bool isLeap(const int &year);
+    bool operator==(const Date &date) const;
 
     // Function to get the days of one month
-    static int getDaysOfMonth(const int &month, const int &year);
+    int getDaysOfMonth(const int &month, const int &year) const; //todo togliere lo static e rendere private
 
-    bool operator==(const Date &date) const;
+    // Function to see if a year is leap
+    bool isLeap(const int &year) const;
 
 private:
     // Function to see if a date is valid

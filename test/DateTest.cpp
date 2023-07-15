@@ -4,6 +4,7 @@
 #include "gtest/gtest.h"
 #include "../Date.h"
 
+
 TEST(DateTest, ConstructorTest) {
     Date date(15, 9, 2000);
     EXPECT_EQ(date.getDay(), 15);
@@ -20,11 +21,6 @@ TEST(DateTest, DefaultConstructorTest) {
 
 
 TEST(DateTest, IsLeapTest) {
-    //Prima eseguiamo dei test su diversi anni
-    EXPECT_TRUE(Date::isLeap(2012));
-    EXPECT_FALSE(Date::isLeap(2018));
-    EXPECT_TRUE(Date::isLeap(2024));
-
     //Dunque testiamo una Data in generale
     Date date(15, 9, 2000);
     ASSERT_TRUE(date.isLeap(date.getYear()));
@@ -33,11 +29,6 @@ TEST(DateTest, IsLeapTest) {
 }
 
 TEST(DateTest, GetDaysOfMonthTest) {
-    //Stesso discorso qua
-    EXPECT_EQ(Date::getDaysOfMonth(1, 2023), 31);
-    EXPECT_EQ(Date::getDaysOfMonth(2, 2023), 28);
-    EXPECT_EQ(Date::getDaysOfMonth(4, 2023), 30);
-
     Date date(15, 9, 2000);
     ASSERT_EQ(date.getDaysOfMonth(date.getMonth(), date.getYear()), 30);
     date.setMonth(2);
