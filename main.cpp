@@ -30,8 +30,8 @@ int main() {
         std::string description;
         std::string newDescription;
         std::string fileName;
+        std::string stringDate;
         char choice;
-        int day, month, year;
 
 
         switch (option) {
@@ -48,28 +48,32 @@ int main() {
                 std::getline(std::cin, title);
                 newList.setTitle(title);
                 //Per avere la sensazione di creare una nuova todolist potrei eliminare tutti i todo precedenti
-                newList.removeTodos(); //todo si lascia?
+                newList.removeTodos();
+                std::cout << "Your new todolist with title " << newList.getTitle() << " was created!" << std::endl;
                 break;
             case 2:
                 std::cout << "Please enter the description of the todo: ";
                 std::cin.ignore();
                 std::getline(std::cin, description);
-                std::cout << "Then enter the due date(in dd mm yy format): ";
-                std::cin >> day >> month >> year;
-                date = Date(day, month, year);
+
+                std::cout << "Then enter the due date(after a space in day/month/year format): ";
+                std::cin.ignore();
+                std::getline(std::cin, stringDate);
+
+                date = ToDo::getDateFromString(stringDate); //todo ci va aggiunto un spazio in qualche modo
                 newList.addToDo(ToDo(date, description));
                 break;
             case 3:
-                std::cout << "Please enter the description of the todo you want to remove: ";
+                std::cout << "Please enter the description or the date of the todo you want to remove: ";
                 std::cin.ignore();
                 std::getline(std::cin, description);
                 newList.removeTodo(description);
                 break;
             case 4:
-                std::cout << "Please enter the description of the todo you want to modify: ";
+                std::cout << "Please enter the description or the date of the todo you want to modify: ";
                 std::cin.ignore();
                 std::getline(std::cin, description);
-                std::cout << "What do you want to modify?(Enter d for description, g for date or c for completed): ";
+                std::cout << "What do you want to modify?(Enter d for description, g for date or c for completed):";
                 std::cin >> choice;
                 if (choice == 'd') {
                     std::cout << "Then please enter your new description: ";
@@ -77,9 +81,10 @@ int main() {
                     std::getline(std::cin, newDescription);
                     newList.modifyTodo(description, newDescription, date);
                 } else if (choice == 'g') {
-                    std::cout << "Then enter the new date(in dd mm yy format): ";
-                    std::cin >> day >> month >> year;
-                    date = Date(day, month, year);
+                    std::cout << "Then enter the due date(in day/month/year format): ";
+                    std::cin.ignore();
+                    std::getline(std::cin, stringDate);
+                    date = ToDo::getDateFromString(stringDate);
                     newList.modifyTodo(description, newDescription, date);
                 } else if (choice == 'c')
                     newList.modifyTodo(description, newDescription, date);
@@ -87,7 +92,7 @@ int main() {
                     std::cout << "Sorry you did not enter a right option..." << std::endl;
                 break;
             case 5:
-                std::cout << "Please enter the description of the todo you want to be completed: ";
+                std::cout << "Please enter the description or the date of the todo you want to be completed: ";
                 std::cin.ignore();
                 std::getline(std::cin, description);
                 newList.setTodoCompleted(description);

@@ -12,13 +12,11 @@
 
 class ToDo {
 public:
-    ToDo(const Date &date, std::string description, bool completed = false) : date(date),
-                                                                              description(std::move(description)),
-                                                                              completed(completed) {
+    ToDo(const Date &date, const std::string &description, bool completed = false) : date(date),
+                                                                                     description(description),
+                                                                                     completed(completed) {
         // More code here...
     }
-
-    ToDo() : completed(false) {}
 
 
     std::string getDate() const {

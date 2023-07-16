@@ -16,7 +16,7 @@ public:
     ToDoList() = default;
 
     // Dei getters - setters controllare se utilizzati o no
-    const std::list<ToDo> &getToDoList() const;
+    const std::list<ToDo> &getToDoList() const; //todo rimuovere
 
     void setToDoList(const std::list<ToDo> &toDoList);
 
@@ -50,7 +50,7 @@ public:
     static void loadFromFile(const std::string &fileName, ToDoList &newList);
 
 private:
-    ToDo &helperFindTodo(const std::string &description);
+    ToDo &helperFindTodo(const std::string &parameter);
 
     std::list<ToDo> toDoList;
     std::string title;

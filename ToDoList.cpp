@@ -35,7 +35,7 @@ void ToDoList::addToDo(const ToDo& todo) {
 
 void ToDoList::removeTodo(const std::string &description) {
     ToDo deletedTodo = helperFindTodo(description);
-    if (!deletedTodo.getDescription().empty()) {
+    if (!deletedTodo.getDescription().empty() || !deletedTodo.getDate().empty()) {
         toDoList.remove(deletedTodo);
         this->numberOfTodos--;
         if (deletedTodo.isCompleted())
@@ -64,7 +64,7 @@ void ToDoList::setTodoCompleted(const std::string &description) {
 void ToDoList::modifyTodo(const std::string &desc, const std::string &newDesc, const Date &newDate) {
     ToDo &modifyToDo = helperFindTodo(desc);
 
-    if (!modifyToDo.getDescription().empty()) {
+    if (!modifyToDo.getDescription().empty() || !modifyToDo.getDate().empty()) {
         //per il momento posso modificare solo una cosa alla volta!
         if (!newDesc.empty()) // se lascio newDesc vuota significa che voglio modificare solo il completed
             modifyToDo.setDescription(newDesc);
@@ -115,17 +115,7 @@ void ToDoList::displayUncompletedToDos() {
 
 }
 
-ToDo &ToDoList::helperFindTodo(const std::string &description) {
-    static ToDo emptyTodo; //forse non la soluzione migliore...
 
-    // Scorro la lista tramite un iteratore
-    for (auto &it: toDoList) {
-        if (it.getDescription() == description)
-            return it;
-    }
-    //altrimenti ritorno un emptyTodo
-    return emptyTodo;
-}
 
 void ToDoList::saveToFile(const std::string &fileName) const {
     std::ofstream file(fileName);
@@ -167,8 +157,8 @@ void ToDoList::loadFromFile(const std::string &fileName, ToDoList &newList) {
         throw (std::runtime_error) "File not found!";
 }
 
-ToDo &ToDoList::findTodo(const std::string &description) {
-    return ToDoList::helperFindTodo(description);
+ToDo &ToDoList::findTodo(const std::string &parameter) {
+    return ToDoList::helperFindTodo(parameter);
 }
 
 int ToDoList::getNumberOfTodos() const {
@@ -178,6 +168,20 @@ int ToDoList::getNumberOfTodos() const {
 int ToDoList::getNumberOfUncompletedTodos() const {
     return this->numberOfTodos - this->numberOfCompletedTodos;
 }
+
+ToDo &ToDoList::helperFindTodo(const std::string &parameter) {
+    static ToDo emptyTodo(Date(), ""); //forse non la soluzione migliore...
+
+    // Scorro la lista tramite un iteratore
+    for (auto &it: toDoList) {
+        if (it.getDescription() == parameter
+            || it.getDate() == parameter)
+            return it;
+    }
+    //altrimenti ritorno un emptyTodo
+    return emptyTodo;
+}
+
 
 
 
