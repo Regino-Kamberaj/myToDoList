@@ -26,21 +26,21 @@ public:
 
     bool operator==(const Date &date) const;
 
+private:
     // Function to get the days of one month
-    int getDaysOfMonth(const int &month, const int &year) const; //todo togliere lo static e rendere private
+    int getDaysOfMonth(int month, int year) const; //todo togliere lo static e rendere private
 
     // Function to see if a year is leap
-    bool isLeap(const int &year) const;
+    bool isLeap(int year) const;
 
-private:
     // Function to see if a date is valid
-    bool validDate(const int &day, const int &month, const int &year);
+    bool validDate(int day, int month, int year);
 
-    bool validDay(const int &day) const;
+    bool validDay(int day, int month, int year) const;
 
-    bool validMonth(const int &month);
+    bool validMonth(int month);
 
-    bool validYear(const int &year);
+    bool validYear(int year);
 
 
     int day;
