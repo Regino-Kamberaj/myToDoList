@@ -21,18 +21,26 @@ TEST(DateTest, DefaultConstructorTest) {
 
 
 TEST(DateTest, IsLeapTest) {
-    //Dunque testiamo una Data in generale
     Date date(15, 9, 2000);
-    ASSERT_TRUE(date.isLeap(date.getYear()));
-    date.setYear(2003);
-    ASSERT_FALSE(date.isLeap(date.getYear()));
+    date.setMonth(2);
+    date.setDay(29);
+    ASSERT_EQ(date.getDay(), 29);
+    Date date2(15, 2, 2003);
+    EXPECT_THROW(date2.setDay(29), std::out_of_range);
 }
 
 TEST(DateTest, GetDaysOfMonthTest) {
     Date date(15, 9, 2000);
-    ASSERT_EQ(date.getDaysOfMonth(date.getMonth(), date.getYear()), 30);
+    date.setDay(30);
+    ASSERT_EQ(date.getDay(), 30);
+    EXPECT_THROW(date.setMonth(2), std::out_of_range);
+    date.setMonth(1);
+    date.setDay(31);
+    ASSERT_EQ(date.getDay(), 31);
+    date.setYear(2003);
+    date.setDay(28);
     date.setMonth(2);
-    ASSERT_EQ(date.getDaysOfMonth(date.getMonth(), date.getYear()), 29);
+    ASSERT_EQ(date.getDay(), 28);
 }
 
 TEST(DateTest, EqualityOperatorTest) {
