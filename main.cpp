@@ -47,7 +47,7 @@ int main() {
                 std::cin.ignore();
                 std::getline(std::cin, title);
                 newList.setTitle(title);
-                //Per avere la sensazione di creare una nuova todolist potrei eliminare tutti i todo precedenti
+                //Per avere la sensazione di creare una nuova todolist potrei eliminare tutti quelli precedenti
                 newList.removeTodos();
                 std::cout << "Your new todolist with title " << newList.getTitle() << " was created!" << std::endl;
                 break;

@@ -14,9 +14,6 @@ const std::list<ToDo> &ToDoList::getToDoList() const {
     return toDoList;
 }
 
-void ToDoList::setToDoList(const std::list<ToDo> &toDoList) {
-    ToDoList::toDoList = toDoList;
-}
 
 const std::string &ToDoList::getTitle() const {
     return title;
@@ -141,7 +138,7 @@ void ToDoList::loadFromFile(const std::string &fileName, ToDoList &newList) {
         //prendi il titolo
         std::string line;
         std::getline(file, newList.title);
-        //prendi i todo fino a quando finiscono
+        //prendi i todos fino a quando finiscono
         while (std::getline(file, line)) {
             std::stringstream ss(line);
             std::string desc, dateString, completed;

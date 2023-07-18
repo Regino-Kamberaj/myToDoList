@@ -15,10 +15,7 @@ public:
 
     ToDoList() = default;
 
-    // Dei getters - setters controllare se utilizzati o no
-    const std::list<ToDo> &getToDoList() const; //todo rimuovere
-
-    void setToDoList(const std::list<ToDo> &toDoList);
+    const std::list<ToDo> &getToDoList() const;
 
     const std::string &getTitle() const;
 

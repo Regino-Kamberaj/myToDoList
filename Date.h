@@ -28,7 +28,7 @@ public:
 
 private:
     // Function to get the days of one month
-    int getDaysOfMonth(int month, int year) const; //todo togliere lo static e rendere private
+    int getDaysOfMonth(int month, int year) const;
 
     // Function to see if a year is leap
     bool isLeap(int year) const;

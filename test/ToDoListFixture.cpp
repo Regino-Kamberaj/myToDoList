@@ -60,7 +60,7 @@ TEST_F(ToDoListFixture, DisplayUncompletedTodosTest) {
     testing::internal::CaptureStdout();
     todolist.displayUncompletedToDos();
     std::string output = testing::internal::GetCapturedStdout();
-    std::string expected = "\nList of uncompleted todos:\n-- Scrivere mail al professore - 9/7/2023\n";
+    std::string expected = "\nList of uncompleted todos:\n-- Scrivere mail al professore - 9/7/2023\n\nThere is 1 todo to complete\n";
     ASSERT_EQ(output, expected);
 }
 
@@ -87,7 +87,7 @@ TEST_F(ToDoListFixture, FindTodoTest) {
     EXPECT_EQ(todo.getDate(), "9/7/2023");
     EXPECT_FALSE(todo.isCompleted());
 
-    //Testiamo poi un todo non esistente
+    //Testiamo poi uno non esistente
     ToDo todo2 = todolist.findTodo("Scrivere ciao al professore");
     EXPECT_EQ(todo2.getDescription(), "");
     EXPECT_EQ(todo2.getDate(), "");
